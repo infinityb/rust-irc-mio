@@ -42,6 +42,18 @@ impl IrcMsgRingBuf {
         IrcMsgRingBuf(RingBuf::new(capacity))
     }
 
+    pub fn is_full(&self) -> bool {
+        self.0.is_full()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.0.is_empty()
+    }
+
+    pub fn capacity(&self) -> usize {
+        self.0.capacity()
+    }
+    
     pub fn mark(&mut self) {
         self.0.mark();
     }
