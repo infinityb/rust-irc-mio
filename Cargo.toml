@@ -1,0 +1,10 @@
+[package]
+name = "irc_mio"
+version = "0.1.0"
+authors = ["Stacey Ell <stacey.ell@gmail.com>"]
+
+[dependencies]
+mio = "*"
+
+[dependencies.irc]
+git = "https://github.com/infinityb/rust-irc"
