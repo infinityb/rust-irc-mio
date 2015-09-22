@@ -1,8 +1,9 @@
 extern crate irc;
 extern crate mio;
+extern crate bytes;
 
 use std::convert::From;
-use mio::buf::{RingBuf, MutBuf, Buf};
+use bytes::{RingBuf, MutBuf, Buf};
 use irc::parse::{IrcMsg, ParseError};
 
 pub enum PushError {
@@ -17,6 +18,7 @@ pub enum ProtocolError {
     TooLong,
 }
 
+#[derive(Debug)]
 pub enum PopError {
     /// More data is needed to pop an IrcMsg
     MoreData,
@@ -139,7 +141,7 @@ impl MutBuf for IrcMsgRingBuf {
         MutBuf::advance(&mut self.0, cnt)
     }
 
-    fn mut_bytes(&mut self) -> &mut [u8] {
+    unsafe fn mut_bytes(&mut self) -> &mut [u8] {
         MutBuf::mut_bytes(&mut self.0)
     }
 }
