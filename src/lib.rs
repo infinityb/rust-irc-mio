@@ -137,7 +137,7 @@ impl MutBuf for IrcMsgRingBuf {
         MutBuf::remaining(&self.0)
     }
 
-    fn advance(&mut self, cnt: usize) {
+    unsafe fn advance(&mut self, cnt: usize) {
         MutBuf::advance(&mut self.0, cnt)
     }
 
